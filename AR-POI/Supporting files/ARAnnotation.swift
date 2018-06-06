@@ -14,6 +14,7 @@ enum AnnotationStyle: Int {
     case darkTooltip
 }
 
+    // This class is used to define an POI
 class ARAnnotation: UIView {
 
     var identifier: UUID?

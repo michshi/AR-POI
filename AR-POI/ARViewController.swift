@@ -31,8 +31,8 @@ class ARViewController: UIViewController, ARSKViewDelegate {
         sceneView.delegate = self
         
         // Show statistics such as fps and node count
-        // sceneView.showsFPS = true
-        // sceneView.showsNodeCount = true
+         sceneView.showsFPS = true
+         sceneView.showsNodeCount = true
         
         // Load the SKScene from 'Scene.sks'
         if let scene = SKScene(fileNamed: "Scene") {
@@ -62,14 +62,14 @@ class ARViewController: UIViewController, ARSKViewDelegate {
     
     func getAndDisplayItemsAroundLocation(_ location: CLLocation, completion: @escaping (Int) -> Void) {
         
-        let searchTerm = "burgers"
+        let searchTerm = "bar"
         let loader = PlaceLoader()
         
         let anchorDistSpread = anchorDistFarthest - anchorDistNearest
         let anchorHeightSpread = anchorDegreesFarthest - anchorDegreesNearest
         
-        //loader.getStaticPOIsFor(location: location) { (resultPOIs, errMsg) in
-        loader.requestPOIsWithGoogleSearch(term: searchTerm, location: location) { (resultPOIs, errMsg) in
+        loader.getStaticPOIsFor(location: location) { (resultPOIs, errMsg) in
+        //loader.requestPOIsWithGoogleSearch(term: searchTerm, location: location) { (resultPOIs, errMsg) in
             if let err = errMsg {
                 self.appDelegate.alertWithTitle("Error", message: err)
                 completion(0)
@@ -124,6 +124,7 @@ class ARViewController: UIViewController, ARSKViewDelegate {
                     self.sceneView.session.add(anchor: anchor)
                 }
                 completion(pois.count)
+//                print(pois)
             }
             else {
                 completion(0)
