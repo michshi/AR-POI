@@ -1,11 +1,3 @@
-//
-//  ARViewController.swift
-//  AR-POI
-//
-//  Created by Jamie Perkins on 9/26/17.
-//  Copyright © 2017 Inorganik Produce, Inc. All rights reserved.
-//
-
 import UIKit
 import SpriteKit
 import ARKit
@@ -31,8 +23,8 @@ class ARViewController: UIViewController, ARSKViewDelegate {
         sceneView.delegate = self
         
         // Show statistics such as fps and node count
-         sceneView.showsFPS = true
-         sceneView.showsNodeCount = true
+        // sceneView.showsFPS = true
+        sceneView.showsNodeCount = true
         
         // Load the SKScene from 'Scene.sks'
         if let scene = SKScene(fileNamed: "Scene") {
@@ -69,7 +61,7 @@ class ARViewController: UIViewController, ARSKViewDelegate {
         let anchorHeightSpread = anchorDegreesFarthest - anchorDegreesNearest
         
         loader.getStaticPOIsFor(location: location) { (resultPOIs, errMsg) in
-        //loader.requestPOIsWithGoogleSearch(term: searchTerm, location: location) { (resultPOIs, errMsg) in
+            //loader.requestPOIsWithGoogleSearch(term: searchTerm, location: location) { (resultPOIs, errMsg) in
             if let err = errMsg {
                 self.appDelegate.alertWithTitle("Error", message: err)
                 completion(0)
@@ -121,10 +113,9 @@ class ARViewController: UIViewController, ARSKViewDelegate {
                     let _ = annot.validateAndSetLocation(location: poiLoc) // not used here, but might be useful for handling tap on annotation
                     self.annotations.append(annot)
                     //print("add anchor for title: \(title) and id \(anchor.identifier), bearing: \(bearing)˚, distance: \(anchorDist)")
-                    self.sceneView.session.add(anchor: anchor)
                 }
                 completion(pois.count)
-//                print(pois)
+                //                print(pois)
             }
             else {
                 completion(0)
@@ -177,5 +168,3 @@ class ARViewController: UIViewController, ARSKViewDelegate {
         
     }
 }
-
-

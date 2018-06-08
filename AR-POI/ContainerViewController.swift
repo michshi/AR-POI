@@ -1,11 +1,3 @@
-//
-//  ContainerViewController.swift
-//  AR-POI
-//
-//  Created by Jamie Perkins on 9/26/17.
-//  Copyright © 2017 Inorganik Produce, Inc. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import CoreLocation
@@ -47,7 +39,7 @@ class ContainerViewController: UIViewController {
         // location
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-		
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,7 +47,7 @@ class ContainerViewController: UIViewController {
         print("request when in use auth")
         locationManager.requestWhenInUseAuthorization()
         if debugHeading == true {
-        	startMotionTracking()
+            startMotionTracking()
         }
     }
     
@@ -201,7 +193,7 @@ extension ContainerViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-
+        
         switch status {
         case .authorizedWhenInUse,
              .authorizedAlways:
